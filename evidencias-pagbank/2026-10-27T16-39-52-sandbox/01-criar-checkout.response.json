@@ -1,0 +1,24 @@
+{
+  "status": 403,
+  "duracaoMs": 275,
+  "headers": {
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+    "cf-ray": "a513239c3886f1de-GRU",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Tue, 27 Oct 2026 16:39:50 GMT",
+    "expires": "Thu, 01 Jan 1970 00:00:01 GMT",
+    "referrer-policy": "same-origin",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=15552000; includeSubDomains",
+    "transfer-encoding": "chunked",
+    "vary": "accept-encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN"
+  },
+  "body": {
+    "cloudflare": "Attention Required! | Cloudflare",
+    "hint": "Provável bloqueio WAF/rede (Cloudflare). Verifique IP ou rede."
+  }
+}

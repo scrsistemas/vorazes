@@ -1,0 +1,43 @@
+{
+  "metodo": "POST",
+  "url": "https://sandbox.api.pagseguro.com/checkouts",
+  "headers": {
+    "accept": "application/json",
+    "authorization": "Bearer <omitido>",
+    "content-type": "application/json"
+  },
+  "body": {
+    "reference_id": "vorazes-1793119192558",
+    "customer_modifiable": true,
+    "customer": {
+      "name": "Cliente Teste Homologacao",
+      "email": "homologacao@exemplo.com"
+    },
+    "items": [
+      {
+        "name": "Assinatura Vorazes — Vorazes",
+        "quantity": 1,
+        "unit_amount": 180000
+      }
+    ],
+    "payment_methods_configs": [
+      {
+        "type": "CREDIT_CARD",
+        "config_options": [
+          {
+            "option": "INSTALLMENTS_LIMIT",
+            "value": "12"
+          },
+          {
+            "option": "INTEREST_FREE_INSTALLMENTS",
+            "value": "12"
+          }
+        ]
+      }
+    ],
+    "notification_urls": [
+      "http://localhost:3000/api/pagseguro/webhook"
+    ],
+    "redirect_url": "http://localhost:3000/confirmacao?plan=vorazes&email=homologacao@exemplo.com"
+  }
+}
