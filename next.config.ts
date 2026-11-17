@@ -54,6 +54,11 @@ const nextConfig: NextConfig = {
   // falhando (ENOENT .next/next-server.js.nft.json — vercel/next.js#96646).
   // A Vercel define VERCEL=1, então lá usamos o build padrão dela.
   output: process.env.VERCEL ? undefined : "standalone",
+  // O instalador é lido por /api/download em tempo de execução, fora do
+  // grafo de imports. Inclui o arquivo no bundle da função na Vercel.
+  outputFileTracingIncludes: {
+    "/api/download": ["./data/installers/**/*"],
+  },
   async headers() {
     return [
       {

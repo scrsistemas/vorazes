@@ -19,9 +19,11 @@ export const downloads: Download[] = [
     version: "1.0.0",
     releaseDate: "2026-09-08",
     platform: "Windows 10/11",
-    fileName: "",
-    sizeMb: 84,
+    fileName: "vorazes-setup-1.0.0-teste.zip",
+    sizeMb: 1,
     changelog: [
+      "PACOTE DE TESTE: valida o download após pagamento aprovado",
+      "Instalador definitivo ainda será publicado",
       "Primeira versão pública do Vorazes",
       "Simulação de Simples Nacional, Lucro Presumido e Lucro Real",
       "Importação de XML de NF-e (compras e vendas)",
