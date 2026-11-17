@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     // Registra a assinatura como pendente (ou aprovada em modo mock) para a
     // consulta de acesso; o status final vem do webhook do PagBank.
-    upsertSubscription({
+    await upsertSubscription({
       email,
       planId: plan.id,
       checkoutId: order.orderId,

@@ -27,10 +27,10 @@ export const plans: Plan[] = [
     name: "Vorazes",
     description:
       "Acesso completo ao sistema Vorazes para contadores, escritórios e empresas.",
-    price: 0.1,
-    total: 1,
-    installments: 10,
-    contractMonths: 10,
+    price: 1,
+    total: 12,
+    installments: 12,
+    contractMonths: 12,
     features: [
       "Simulações tributárias ilimitadas",
       "Clientes ilimitados",

@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Validar pagamento antes de qualquer acesso ao arquivo.
-  const subscription = getSubscription(email);
+  const subscription = await getSubscription(email);
   if (!subscription || subscription.status !== "aprovado") {
     return new Response(
       JSON.stringify({

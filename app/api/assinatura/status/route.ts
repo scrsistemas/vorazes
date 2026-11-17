@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const subscription = getSubscription(email);
+  const subscription = await getSubscription(email);
   if (!subscription) {
     return NextResponse.json({
       ativa: false,

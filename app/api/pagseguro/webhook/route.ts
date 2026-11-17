@@ -50,9 +50,9 @@ export async function POST(request: NextRequest) {
 
   const status = await fetchCheckoutStatus(checkoutId);
 
-  const subscription = getSubscriptionByCheckoutId(checkoutId);
+  const subscription = await getSubscriptionByCheckoutId(checkoutId);
   if (subscription) {
-    upsertSubscription({
+    await upsertSubscription({
       email: subscription.email,
       planId: subscription.planId,
       checkoutId,
