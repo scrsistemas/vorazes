@@ -19,16 +19,15 @@ export type Plan = {
 // parcelada em até 12x sem juros no cartão (parcelamento definido no painel
 // do PagBank). O contrato não pode ser cancelado durante o período.
 //
-// TEMPORÁRIO (teste): valor reduzido para validar o checkout no PagBank.
-// Para voltar ao valor comercial, use price: 150 e total: 1800.
+// Valor comercial: R$ 1.800 à vista ou em até 12x de R$ 150 sem juros.
 export const plans: Plan[] = [
   {
     id: "vorazes",
     name: "Vorazes",
     description:
       "Acesso completo ao sistema Vorazes para contadores, escritórios e empresas.",
-    price: 1,
-    total: 12,
+    price: 150,
+    total: 1800,
     installments: 12,
     contractMonths: 12,
     features: [
