@@ -57,7 +57,9 @@ const nextConfig: NextConfig = {
   // O instalador é lido por /api/download em tempo de execução, fora do
   // grafo de imports. Inclui o arquivo no bundle da função na Vercel.
   outputFileTracingIncludes: {
-    "/api/download": ["./data/installers/**/*"],
+    "/api/download": ["./data/installers/**/*", "./data/subscriptions.json"],
+    "/api/assinatura/status": ["./data/subscriptions.json"],
+    "/api/pagseguro/webhook": ["./data/subscriptions.json"],
   },
   async headers() {
     return [

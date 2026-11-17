@@ -144,14 +144,21 @@ export async function getSubscription(
   const chave = normalizarEmail(email);
 
   if (usaRemoto) {
-    return parseAssinatura(
-      await kv(["GET", PREFIXO_ASSINATURA + chave])
-    );
+    try {
+      return parseAssinatura(
+        await kv(["GET", PREFIXO_ASSINATURA + chave])
+      );
+    } catch (erro) {
+      // Se o Redis estiver indisponível na Vercel, usa a lista local
+      // empacotada como fallback (somente leitura) para não travar o acesso.
+      console.error("[subscriptions] falha no Redis ao ler assinatura:", erro);
+      return lerArquivo().find((s) => s.email === chave) ?? null;
+    }
   }
 
   if (process.env.VERCEL) {
     avisarVercelSemKv();
-    return null;
+    return lerArquivo().find((s) => s.email === chave) ?? null;
   }
 
   return lerArquivo().find((s) => s.email === chave) ?? null;
@@ -161,13 +168,18 @@ export async function getSubscriptionByCheckoutId(
   checkoutId: string
 ): Promise<Subscription | null> {
   if (usaRemoto) {
-    const email = await kv(["GET", PREFIXO_CHECKOUT + checkoutId]);
-    return email ? getSubscription(String(email)) : null;
+    try {
+      const email = await kv(["GET", PREFIXO_CHECKOUT + checkoutId]);
+      return email ? getSubscription(String(email)) : null;
+    } catch (erro) {
+      console.error("[subscriptions] falha no Redis ao ler checkout:", erro);
+      return lerArquivo().find((s) => s.checkoutId === checkoutId) ?? null;
+    }
   }
 
   if (process.env.VERCEL) {
     avisarVercelSemKv();
-    return null;
+    return lerArquivo().find((s) => s.checkoutId === checkoutId) ?? null;
   }
 
   return lerArquivo().find((s) => s.checkoutId === checkoutId) ?? null;
